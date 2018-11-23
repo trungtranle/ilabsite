@@ -31,7 +31,7 @@ WAGTAIL_APPEND_SLASH = True
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['35.237.216.144', 'localhost']
+ALLOWED_HOSTS = ['35.237.216.144', 'localhost', 'ilab.com.vn']
 
 # Set up Wagtail Postgresql search backend
 WAGTAILSEARCH_BACKENDS = {
