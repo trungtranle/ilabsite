@@ -91,7 +91,7 @@ jQuery(document).ready(function ($) {
 
 
         $('html, body').animate({
-          scrollTop: target.offset().top -70 // Scroll height
+          scrollTop: target.offset().top -90 // Scroll height
         }, 500, 'easeInOutExpo');
 
         /*
