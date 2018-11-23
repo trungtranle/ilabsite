@@ -9,7 +9,7 @@ def index(request):
         if form.is_valid():
             form.save()
             messages.add_message(request = request, level= messages.SUCCESS, message= 'Chúng tôi đã nhận được thông tin của bạn. Chúng tôi sẽ liên hệ với bạn trong thời gian sớm nhất!')
-            return HttpResponseRedirect("/#contact")
+            return HttpResponseRedirect("/")
         else:
             print(form.errors)
     else:
