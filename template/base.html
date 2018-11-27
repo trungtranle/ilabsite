@@ -1,0 +1,139 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>ilab - Sức khỏe tin cậy {% block title_block %} {% endblock %}</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="keywords">
+    <meta content="" name="description">
+
+    <!-- Favicons -->
+    <link href="{% static 'img/logo_64.png' %}" rel="icon">
+    <link rel="apple-touch-icon" sizes=”114×114″ href="{% static 'img/logo_114.png' %}" />
+    <link rel="apple-touch-icon" sizes=”72×72″ href="{% static 'img/logo_72.png' %}" />
+    <link rel=”apple-touch-icon-precomposed” href="{% static 'img/logo_114.png' %}">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Raleway:300,400,500,700,800|Montserrat:300,400,700" rel="stylesheet">
+
+    <!-- Bootstrap CSS File -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+    <!-- Libraries CSS Files -->
+    <link href="{% static 'lib/font-awesome/css/font-awesome.min.css' %}" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/brands.css" integrity="sha384-QT2Z8ljl3UupqMtQNmPyhSPO/d5qbrzWmFxJqmY7tqoTuT2YrQLEqzvVOP2cT5XW" crossorigin="anonymous">
+    <link href="{% static 'lib/animate/animate.min.css' %}" rel="stylesheet">
+    <link href="{% static 'lib/ionicons/css/ionicons.min.css' %}" rel="stylesheet">
+    <link href="{% static 'lib/owlcarousel/assets/owl.carousel.min.css' %}" rel="stylesheet">
+    <link href="{% static 'lib/magnific-popup/magnific-popup.css' %}" rel="stylesheet">
+
+
+    <!-- Main Stylesheet File -->
+    <link href="{% static 'css/style.css' %}" rel="stylesheet">
+
+</head>
+<style>
+    #logo {
+        position: relative;
+        top: -4px;
+    }
+
+    .active {
+        color: #6F4AC1 !important;
+    }
+</style>
+
+<body data-spy="scroll" data-target="#nav-menu-container" data-offset="0">
+
+    <!--==========================
+    Top Bar
+  ============================-->
+    <section id="topbar" class="d-none d-lg-block">
+        <div class="container clearfix">
+            <div class="contact-info float-left">
+                <i class="fas fa-envelope-open-text"></i><a href="mailto:support@ilab.com.vn">support@ilab.com.vn</a>
+                <i class="fas fa-phone"></i> <a href="tel:+842838533171">028 38 533 171</a> - <a href="tel:+840903868268">0903 868 268 </a>
+
+                <i class="fas fa-home"></i> <a href="https://goo.gl/maps/TNotwR6pgjx">171 Nhật Tảo, Quận 10, TP.HCM</a>
+            </div>
+
+    </section>
+
+    <!--==========================
+    Header
+  ============================-->
+    <header id="header">
+
+        <div class="container">
+
+            <div id="logo" class="pull-left">
+                <!--<h1><a href="#body" class="scrollto">Reve<span>al</span></a></h1>-->
+
+
+                <a href="{% url 'index' %}"><img src="{% static 'img/logo.png' %}" width="128px" alt="" title="" /></a>
+
+            </div>
+
+            <nav id="nav-menu-container" class="navbar">
+                <ul class="nav nav-menu">
+                    <li class="nav-item"><a class="nav-link" href="{% url 'index'%}#intro">Trang chủ</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'index'%}#about">Giới thiệu</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'index'%}#services">Dịch vụ</a></li>
+                    <li class="nav-item menu-has-children"><a class="nav-link" href="#call-to-action">Kết quả xét nghiệm</a>
+                        <ul>
+                            <li><a href="http://www.ilabmedical.com/ViewResult.aspx">Kết quả cá nhân</a></li>
+                            <li><a href="http://www.ilabmedical.com/Dangnhap.aspx">Kết quả theo đơn vị</a></li>
+
+                        </ul>
+                    </li>
+                    <li><a class="nav-link" href="{% url 'index'%}#blog">Bài viết</a></li>
+                    <li><a class="nav-link" href="{% url 'index'%}#contact">Liên hệ</a></li>
+                </ul>
+            </nav>
+            <!-- #nav-menu-container -->
+
+    </header>
+
+    {% block body_block %}
+
+    {% endblock %}
+<footer id="footer">
+    <div class="container">
+        <div class="copyright">
+            &copy; <strong>iLab</strong>, 2018.
+            <p>For any web inquiries, please email us at <a href="mailto:webmaster@ilab.com.vn">webmaster@ilab.com.vn</a> </p>
+        </div>
+
+    </div>
+</footer>
+<!-- #footer -->
+
+<a href="#" class="back-to-top"><i class="fas fa-chevron-up"></i></a>
+
+<!-- JavaScript Libraries -->
+<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-migrate-3.0.1.min.js" integrity="sha256-F0O1TmEa4I8N24nY0bya59eP6svWcshqX1uzwaWC4F4=" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.bundle.min.js" integrity="sha384-pjaaA8dDz/5BgdFUPX6M/9SUZv4d12SUPF0axWc+VRZkx5xU3daN+lYb49+Ax+Tl" crossorigin="anonymous"></script>
+<script src="{% static 'lib/easing/easing.min.js' %}"></script>
+<script src="{% static 'lib/superfish/hoverIntent.js' %}"></script>
+<script src="{% static 'lib/superfish/superfish.min.js' %}"></script>
+<script src="{% static 'lib/wow/wow.min.js' %}"></script>
+<script src="{% static 'lib/owlcarousel/owl.carousel.min.js' %}"></script>
+<script src="{% static 'lib/magnific-popup/magnific-popup.min.js' %}"></script>
+<script src="{% static 'lib/sticky/sticky.js' %}"></script>
+
+<!-- Contact Form JavaScript File -->
+
+
+<!-- Template Main Javascript File -->
+<script src="{% static 'js/main.js' %} "></script>
+
+<!--<script src="{% static 'js/main2.js' %} "></script>-->
+
+</body>
+
+</html>

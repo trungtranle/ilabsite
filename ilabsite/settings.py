@@ -31,7 +31,7 @@ WAGTAIL_APPEND_SLASH = True
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['35.237.216.144', 'localhost', 'ilab.com.vn']
+ALLOWED_HOSTS = ['35.237.216.144', 'localhost', 'ilab.com.vn', '127.0.0.1']
 
 # Set up Wagtail Postgresql search backend
 WAGTAILSEARCH_BACKENDS = {
@@ -122,7 +122,8 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'ilabsite',
         'PORT':5432,
-        'HOST':"35.237.216.144",
+        #'HOST':"35.237.216.144", #PRODUCTION DB
+        'HOST':"localhost", #DEVELOPMENT DB
         'USER':'ilabsite',
         'PASSWORD':"ilabsite"
     }

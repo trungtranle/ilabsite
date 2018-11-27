@@ -3,7 +3,7 @@ from main.models import Test, TestCategory, Contact_requirement
 # Register your models here.
 
 class TestAdmin(admin.ModelAdmin):
-    #fields = "__all__"
+    fields = ('name', 'category', 'referance_range', 'price', 'publish','sample_type', 'slug', 'description', 'related_post')
     list_filter = ['category', 'publish']
     list_display = ('name', 'category', 'referance_range', 'price', 'publish')
     search_fields = ['name']

@@ -1,6 +1,7 @@
 {% load staticfiles %}
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="utf-8">
   <title>ilab - Sức khỏe tin cậy</title>
@@ -10,8 +11,8 @@
 
   <!-- Favicons -->
   <link href="{% static 'img/logo_64.png' %}" rel="icon">
-  <link rel="apple-touch-icon" sizes=”114×114″ href="{% static 'img/logo_114.png' %}"/>
-  <link rel="apple-touch-icon" sizes=”72×72″ href="{% static 'img/logo_72.png' %}"/>
+  <link rel="apple-touch-icon" sizes=”114×114″ href="{% static 'img/logo_114.png' %}" />
+  <link rel="apple-touch-icon" sizes=”72×72″ href="{% static 'img/logo_72.png' %}" />
   <link rel=”apple-touch-icon-precomposed” href="{% static 'img/logo_114.png' %}">
 
   <!-- Google Fonts -->
@@ -22,7 +23,6 @@
 
   <!-- Libraries CSS Files -->
   <link href="{% static 'lib/font-awesome/css/font-awesome.min.css' %}" rel="stylesheet">
-  <!--<link href="{% static 'lib/font-awesome/css/fontawesome.min.css' %}" rel="stylesheet">-->
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/brands.css" integrity="sha384-QT2Z8ljl3UupqMtQNmPyhSPO/d5qbrzWmFxJqmY7tqoTuT2YrQLEqzvVOP2cT5XW" crossorigin="anonymous">
   <link href="{% static 'lib/animate/animate.min.css' %}" rel="stylesheet">
@@ -36,15 +36,14 @@
 
 </head>
 <style>
+  #logo {
+    position: relative;
+    top: -4px;
+  }
 
-#logo{
-  position: relative;
-  top: -4px;
-}
-
-.active {
-  color: #6F4AC1 !important;
-}
+  .active {
+    color: #6F4AC1 !important;
+  }
 </style>
 
 <body data-spy="scroll" data-target="#nav-menu-container" data-offset="0">
@@ -74,41 +73,41 @@
         <!--<h1><a href="#body" class="scrollto">Reve<span>al</span></a></h1>-->
 
 
-        <a href="{% url 'index' %}"><img src="{% static 'img/logo.png' %}" width = "128px" alt="" title="" /></a>
+        <a href="{% url 'index' %}"><img src="{% static 'img/logo.png' %}" width="128px" alt="" title="" /></a>
 
       </div>
 
-<nav id="nav-menu-container" class="navbar">
-  <ul class="nav nav-menu">
-    <li class="nav-item"><a class="nav-link" href="#intro">Trang chủ</a></li>
-    <li class="nav-item"><a class="nav-link" href="#about">Giới thiệu</a></li>
-    <li class="nav-item"><a class="nav-link" href="#services">Dịch vụ</a></li>
-    <li class="nav-item menu-has-children"><a class="nav-link" href="#call-to-action">Kết quả xét nghiệm</a>
-      <ul>
-        <li><a href="http://www.ilabmedical.com/ViewResult.aspx">Kết quả cá nhân</a></li>
-        <li><a href="http://www.ilabmedical.com/Dangnhap.aspx">Kết quả theo đơn vị</a></li>
+      <nav id="nav-menu-container" class="navbar">
+        <ul class="nav nav-menu">
+          <li class="nav-item"><a class="nav-link" href="#intro">Trang chủ</a></li>
+          <li class="nav-item"><a class="nav-link" href="#about">Giới thiệu</a></li>
+          <li class="nav-item"><a class="nav-link" href="#services">Dịch vụ</a></li>
+          <li class="nav-item menu-has-children"><a class="nav-link" href="#call-to-action">Kết quả xét nghiệm</a>
+            <ul>
+              <li><a href="http://www.ilabmedical.com/ViewResult.aspx">Kết quả cá nhân</a></li>
+              <li><a href="http://www.ilabmedical.com/Dangnhap.aspx">Kết quả theo đơn vị</a></li>
 
-      </ul>
-    </li>
-    <li><a class = "nav-link" href="#contact">Liên hệ</a></li>
-  </ul>
-</nav>
-<!-- #nav-menu-container -->
+            </ul>
+          </li>
+          <li><a class="nav-link" href="#blog">Bài viết</a></li>
+          <li><a class="nav-link" href="#contact">Liên hệ</a></li>
+        </ul>
+      </nav>
+      <!-- #nav-menu-container -->
 
-  </header><!-- #header -->
+  </header>
+  <!-- #header -->
 
   <!--==========================
     Intro Section
   ============================-->
 
 
-  {% if messages %}
-    {% for message in messages %}
-    <div class="alert alert-{{message.tags}} p-3">
-      {{message}}
-    </div>
-    {% endfor %}
-  {% endif %}
+  {% if messages %} {% for message in messages %}
+  <div class="alert alert-{{message.tags}} p-3">
+    {{message}}
+  </div>
+  {% endfor %} {% endif %}
   <section id="intro">
 
     <div class="intro-content">
@@ -119,7 +118,7 @@
       </div>
     </div>
 
-    <div id="intro-carousel" class="owl-carousel" >
+    <div id="intro-carousel" class="owl-carousel">
       <div class="item" style="background-image: url('{% static 'img/intro-carousel/1.jpg' %}');"></div>
       <div class="item" style="background-image: url('{% static 'img/intro-carousel/2.jpg' %}');"></div>
       <div class="item" style="background-image: url('{% static 'img/intro-carousel/3.jpg' %}');"></div>
@@ -127,7 +126,8 @@
       <div class="item" style="background-image: url('{% static 'img/intro-carousel/5.jpg' %}');"></div>
     </div>
 
-  </section><!-- #intro -->
+  </section>
+  <!-- #intro -->
 
   <main id="main">
 
@@ -139,17 +139,17 @@
       <div class="container">
         <div class="row">
           <div class="col-lg-6 about-img">
-            <img src="img/about-img.jpg" alt="">
+            <img src="{% static 'img/ilab-1.jpg' %}" alt="">
           </div>
 
           <div class="col-lg-6 content">
-            <h2>Lorem ipsum dolor sit amet, consectetur adipiscing</h2>
-            <h3>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</h3>
+            <h2>Giải pháp tin cậy cho sức khỏe của bạn</h2>
+            <h3>Xét nghiệm Y khoa iLab Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil sed modi est unde molestias tempora.</h3>
 
             <ul>
-              <li><i class="ion-android-checkmark-circle"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat.</li>
-              <li><i class="ion-android-checkmark-circle"></i> Duis aute irure dolor in reprehenderit in voluptate velit.</li>
-              <li><i class="ion-android-checkmark-circle"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate trideta storacalaperda mastiro dolore eu fugiat nulla pariatur.</li>
+              <li><i class="ion-android-checkmark-circle"></i> Hệ thống máy xét nghiệm tự động, hiện đại, đạt tiêu chuẩn.</li>
+              <li><i class="ion-android-checkmark-circle"></i> Đội ngũ cố vấn chuyên môn từ các trường Đại Học: Đại học Y Dược TP. HCM, ĐH Khoa học tự nhiên.</li>
+              <li><i class="ion-android-checkmark-circle"></i> Thực hiện đa dạng các xét nghiệm với giá thành hợp lý</li>
             </ul>
 
           </div>
@@ -157,16 +157,16 @@
 
       </div>
     </section>
-  <!-- #about -->
+    <!-- #about -->
 
     <!--==========================
       Services Section
     ============================-->
-    <section id="services" class = "wow fadeInUp">
+    <section id="services" class="wow fadeInUp">
       <div class="container">
         <div class="section-header">
-          <h2>Services</h2>
-          <p>Sed tamen tempor magna labore dolore dolor sint tempor duis magna elit veniam aliqua esse amet veniam enim export quid quid veniam aliqua eram noster malis nulla duis fugiat culpa esse aute nulla ipsum velit export irure minim illum fore</p>
+          <h2>Dịch vụ</h2>
+          <p>Từ các xét nghiệm thường quy đến các xét nghiệm chuyên sâu và kỹ thuật cao, iLab cung cấp một giải pháp trọn vẹn cho sức khỏe của bạn.</p>
         </div>
 
         <div class="row">
@@ -174,245 +174,79 @@
           <div class="col-lg-6">
             <div class="box wow fadeInLeft">
               <div class="icon"><i class="fas fa-vial"></i></div>
-              <h4 class="title"><a href="">Hóa sinh</a></h4>
-              <p class="description">Voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident etiro rabeta lingo.</p>
+              <h4 class="title"><a href="{% url 'category' 'sinh-hoa' %}">Hóa sinh</a></h4>
+              <p class="description">Các xét nghiệm sinh hóa máu, dịch, nước tiểu như chức năng gan, bộ mỡ, chức năng thận, ...</p>
             </div>
           </div>
 
           <div class="col-lg-6">
             <div class="box wow fadeInRight">
               <div class="icon"><i class="fas fa-tint"></i></div>
-              <h4 class="title"><a href="">Huyết học</a></h4>
-              <p class="description">Minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat tarad limino ata nodera clas.</p>
+              <h4 class="title"><a href="{% url 'category' 'huyet-hoc' %}">Huyết học</a></h4>
+              <p class="description">Các xét nghiệm huyết học tế bào như công thức máu, huyết đồ, xét nghiệm đông - cầm máu ...</p>
             </div>
           </div>
 
           <div class="col-lg-6">
             <div class="box wow fadeInLeft" data-wow-delay="0.2s">
               <div class="icon"><i class="fab fa-yahoo"></i></div>
-              <h4 class="title"><a href="">Miễn dịch</a></h4>
-              <p class="description">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur trinige zareta lobur trade.</p>
+              <h4 class="title"><a href="{% url 'category' 'mien-dich' %}">Miễn dịch</a></h4>
+              <p class="description">Các xét nghiệm miễn dịch như viêm gan B, viêm gan C, các dấu ấn ung thư nhằm tầm soát và theo dõi.</p>
             </div>
           </div>
 
           <div class="col-lg-6">
             <div class="box wow fadeInRight" data-wow-delay="0.2s">
               <div class="icon"><i class="fas fa-bug"></i></div>
-              <h4 class="title"><a href="">Vi sinh - Ký sinh trùng</a></h4>
-              <p class="description">Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum rideta zanox satirente madera</p>
+              <h4 class="title"><a href="{% url 'category' 'vi-sinh-ky-sinh-trung' %}">Vi sinh - Ký sinh trùng</a></h4>
+              <p class="description">Cấy, định danh và thực hiện kháng sinh đồ, chẩn đoán ký sinh trùng bằng huyết thanh học</p>
             </div>
           </div>
 
           <div class="col-lg-6">
             <div class="box wow fadeInLeft" data-wow-delay="0.2s">
               <div class="icon"><i class="fas fa-dna"></i></div>
-              <h4 class="title"><a href="">Sinh học phân tử</a></h4>
-              <p class="description">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur trinige zareta lobur trade.</p>
+              <h4 class="title"><a href="{% url 'category' 'sinh-hoc-phan-tu' %}">Sinh học phân tử</a></h4>
+              <p class="description">Thực hiện các xét nghiệm sinh học phân tử hiện đại như đo tải lượng HBV, HCV, xác định genotype HPV, Chlamydia, ....</p>
             </div>
           </div>
 
           <div class="col-lg-6">
             <div class="box wow fadeInRight" data-wow-delay="0.2s">
               <div class="icon"><i class="fas fa-microscope"></i></div>
-              <h4 class="title"><a href="">Tế bào học - Giải phẫu bệnh</a></h4>
-              <p class="description">Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum rideta zanox satirente madera</p>
+              <h4 class="title"><a href="{% url 'category' 'te-bao-giai-phau-benh' %}">Tế bào học - Giải phẫu bệnh</a></h4>
+              <p class="description">Xét nghiệm tế bào học cổ tử cung (Pap Smear) bằng phương pháp PrepMethod, tế bào học FNA, xét nghiệm giải phẫu bệnh các mô.</p>
+            </div>
+          </div>
+
+          <div class="col-lg-6">
+            <div class="box wow fadeInLeft" data-wow-delay="0.2s">
+              <div class="icon"><i class="fas fa-female"></i></div>
+              <h4 class="title"><a href="{% url 'category' 'tien-san' %}">Xét nghiệm tiền sản</a></h4>
+              <p class="description">Xét nghiệm tiền sản giúp chẩn đoán đái tháo đường thai kỳ, đánh giá nguy cơ các hội chứng di truyền như hội chứng Down, tật nứt đốt sống; sàng lọc trước sinh sử dụng công nghệ không xâm lấn (NIPT)</p>
+            </div>
+          </div>
+
+          <div class="col-lg-6">
+            <div class="box wow fadeInRight" data-wow-delay="0.2s">
+              <div class="icon"><i class="fas fa-medkit"></i></div>
+              <h4 class="title"><a href="{% url 'all_services' %}">Tất cả các xét nghiệm <i class="fas fa-chevron-circle-right"></i></a></h4>
+              <p class="description">iLab cung cấp đầy đủ các xét nghiệm, giúp việc chẩn đoán, theo dõi và điều trị, cũng như sàng lọc và chăm sóc sức khỏe một cách toàn diện nhất</p>
             </div>
           </div>
         </div>
 
-      </div>
-    </section><!-- #services -->
+    </section>
+    <!-- #services -->
 
 
-
-    <!--==========================
-      Our Portfolio Section
-    ============================-->
-    <section id="portfolio" class="wow fadeInUp">
-      <div class="container">
-        <div class="section-header">
-          <h2>Our Portfolio</h2>
-          <p>Sed tamen tempor magna labore dolore dolor sint tempor duis magna elit veniam aliqua esse amet veniam enim export quid quid veniam aliqua eram noster malis nulla duis fugiat culpa esse aute nulla ipsum velit export irure minim illum fore</p>
-        </div>
-      </div>
-
-      <div class="container-fluid">
-        <div class="row no-gutters">
-
-          <div class="col-lg-3 col-md-4">
-            <div class="portfolio-item wow fadeInUp">
-              <a href="img/portfolio/1.jpg" class="portfolio-popup">
-                <img src="img/portfolio/1.jpg" alt="">
-                <div class="portfolio-overlay">
-                  <div class="portfolio-info"><h2 class="wow fadeInUp">Portfolio Item 1</h2></div>
-                </div>
-              </a>
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-4">
-            <div class="portfolio-item wow fadeInUp">
-              <a href="img/portfolio/2.jpg" class="portfolio-popup">
-                <img src="img/portfolio/2.jpg" alt="">
-                <div class="portfolio-overlay">
-                  <div class="portfolio-info"><h2 class="wow fadeInUp">Portfolio Item 2</h2></div>
-                </div>
-              </a>
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-4">
-            <div class="portfolio-item wow fadeInUp">
-              <a href="img/portfolio/3.jpg" class="portfolio-popup">
-                <img src="img/portfolio/3.jpg" alt="">
-                <div class="portfolio-overlay">
-                  <div class="portfolio-info"><h2 class="wow fadeInUp">Portfolio Item 3</h2></div>
-                </div>
-              </a>
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-4">
-            <div class="portfolio-item wow fadeInUp">
-              <a href="img/portfolio/4.jpg" class="portfolio-popup">
-                <img src="img/portfolio/4.jpg" alt="">
-                <div class="portfolio-overlay">
-                  <div class="portfolio-info"><h2 class="wow fadeInUp">Portfolio Item 4</h2></div>
-                </div>
-              </a>
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-4">
-            <div class="portfolio-item wow fadeInUp">
-              <a href="img/portfolio/5.jpg" class="portfolio-popup">
-                <img src="img/portfolio/5.jpg" alt="">
-                <div class="portfolio-overlay">
-                  <div class="portfolio-info"><h2 class="wow fadeInUp">Portfolio Item 5</h2></div>
-                </div>
-              </a>
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-4">
-            <div class="portfolio-item wow fadeInUp">
-              <a href="img/portfolio/6.jpg" class="portfolio-popup">
-                <img src="img/portfolio/6.jpg" alt="">
-                <div class="portfolio-overlay">
-                  <div class="portfolio-info"><h2 class="wow fadeInUp">Portfolio Item 6</h2></div>
-                </div>
-              </a>
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-4">
-            <div class="portfolio-item wow fadeInUp">
-              <a href="img/portfolio/7.jpg" class="portfolio-popup">
-                <img src="img/portfolio/7.jpg" alt="">
-                <div class="portfolio-overlay">
-                  <div class="portfolio-info"><h2 class="wow fadeInUp">Portfolio Item 7</h2></div>
-                </div>
-              </a>
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-4">
-            <div class="portfolio-item wow fadeInUp">
-              <a href="img/portfolio/8.jpg" class="portfolio-popup">
-                <img src="img/portfolio/8.jpg" alt="">
-                <div class="portfolio-overlay">
-                  <div class="portfolio-info"><h2 class="wow fadeInUp">Portfolio Item 8</h2></div>
-                </div>
-              </a>
-            </div>
-          </div>
-
-        </div>
-
-      </div>
-    </section><!-- #portfolio -->
-
-    <!--==========================
-      Testimonials Section
-    ============================-->
-    <section id="testimonials" class="wow fadeInUp">
-      <div class="container">
-        <div class="section-header">
-          <h2>Testimonials</h2>
-          <p>Sed tamen tempor magna labore dolore dolor sint tempor duis magna elit veniam aliqua esse amet veniam enim export quid quid veniam aliqua eram noster malis nulla duis fugiat culpa esse aute nulla ipsum velit export irure minim illum fore</p>
-        </div>
-        <div class="owl-carousel testimonials-carousel">
-
-            <div class="testimonial-item">
-              <p>
-                <img src="img/quote-sign-left.png" class="quote-sign-left" alt="">
-                Proin iaculis purus consequat sem cure digni ssim donec porttitora entum suscipit rhoncus. Accusantium quam, ultricies eget id, aliquam eget nibh et. Maecen aliquam, risus at semper.
-                <img src="img/quote-sign-right.png" class="quote-sign-right" alt="">
-              </p>
-              <img src="img/testimonial-1.jpg" class="testimonial-img" alt="">
-              <h3>Saul Goodman</h3>
-              <h4>Ceo &amp; Founder</h4>
-            </div>
-
-            <div class="testimonial-item">
-              <p>
-                <img src="img/quote-sign-left.png" class="quote-sign-left" alt="">
-                Export tempor illum tamen malis malis eram quae irure esse labore quem cillum quid cillum eram malis quorum velit fore eram velit sunt aliqua noster fugiat irure amet legam anim culpa.
-                <img src="img/quote-sign-right.png" class="quote-sign-right" alt="">
-              </p>
-              <img src="img/testimonial-2.jpg" class="testimonial-img" alt="">
-              <h3>Sara Wilsson</h3>
-              <h4>Designer</h4>
-            </div>
-
-            <div class="testimonial-item">
-              <p>
-                <img src="img/quote-sign-left.png" class="quote-sign-left" alt="">
-                Enim nisi quem export duis labore cillum quae magna enim sint quorum nulla quem veniam duis minim tempor labore quem eram duis noster aute amet eram fore quis sint minim.
-                <img src="img/quote-sign-right.png" class="quote-sign-right" alt="">
-              </p>
-              <img src="img/testimonial-3.jpg" class="testimonial-img" alt="">
-              <h3>Jena Karlis</h3>
-              <h4>Store Owner</h4>
-            </div>
-
-            <div class="testimonial-item">
-              <p>
-                <img src="img/quote-sign-left.png" class="quote-sign-left" alt="">
-                Fugiat enim eram quae cillum dolore dolor amet nulla culpa multos export minim fugiat minim velit minim dolor enim duis veniam ipsum anim magna sunt elit fore quem dolore labore illum veniam.
-                <img src="img/quote-sign-right.png" class="quote-sign-right" alt="">
-              </p>
-              <img src="img/testimonial-4.jpg" class="testimonial-img" alt="">
-              <h3>Matt Brandon</h3>
-              <h4>Freelancer</h4>
-            </div>
-
-            <div class="testimonial-item">
-              <p>
-                <img src="img/quote-sign-left.png" class="quote-sign-left" alt="">
-                Quis quorum aliqua sint quem legam fore sunt eram irure aliqua veniam tempor noster veniam enim culpa labore duis sunt culpa nulla illum cillum fugiat legam esse veniam culpa fore nisi cillum quid.
-                <img src="img/quote-sign-right.png" class="quote-sign-right" alt="">
-              </p>
-              <img src="img/testimonial-5.jpg" class="testimonial-img" alt="">
-              <h3>John Larson</h3>
-              <h4>Entrepreneur</h4>
-            </div>
-
-        </div>
-
-      </div>
-    </section><!-- #testimonials -->
-
-    <!--==========================
-      Call To Action Section
-    ============================-->
     <section id="call-to-action" class="wow fadeInUp">
       <div class="container">
         <div class="row">
           <div class="col-lg-6 text-center text-lg-left">
             <h3 class="cta-title">Kết quả xét nghiệm</h3>
-            <p class="cta-text"> Tra cứu kết quả xét nghiệm trực tuyến nhanh chóng và tiện lợi. <br>
-            Hướng dẫn tra cứu kết quả xét nghiệm cá nhân tại <a href="http://www.ilabmedical.com/Huongdanbn.aspx">đây</a>, hướng dẫn tra cứu kết quả theo đơn vị tại <a href="http://www.ilabmedical.com/Huongdandonvi.aspx">đây</a></p>
+            <p class="cta-text"> Tra cứu kết quả xét nghiệm trực tuyến nhanh chóng và tiện lợi.
+              <br> Hướng dẫn tra cứu kết quả xét nghiệm cá nhân tại <a href="http://www.ilabmedical.com/Huongdanbn.aspx">đây</a>, hướng dẫn tra cứu kết quả theo đơn vị tại <a href="http://www.ilabmedical.com/Huongdandonvi.aspx">đây</a></p>
           </div>
           <div class="col-lg-3 cta-btn-container text-center">
             <a class="cta-btn align-middle" href="http://www.ilabmedical.com/ViewResult.aspx">Kết quả cá nhân</a>
@@ -421,22 +255,24 @@
           <div class="col-lg-3 cta-btn-container text-center">
             <a class="cta-btn align-middle" href="http://www.ilabmedical.com/Dangnhap.aspx">Kết quả theo đơn vị</a>
           </div>
-
-
-
+        </div>
       </div>
-    </section><!-- #call-to-action -->
+    </section>
 
-    <!--==========================
-      Our Team Section
-    ============================-->
-
-    <section id="blog" class="wow fadeInUp">
+    <section>
 
     </section>
-    <!--==========================
-      Contact Section
-    ============================-->
+
+
+    <section id="blog" class="wow fadeInUp">
+      <div class="container">
+        <div class="section-header">
+          <h2>Kiến thức về xét nghiệm</h2>
+          <p>Các bài viết mới nhất</p>
+        </div>
+      </div>
+    </section>
+
     <section id="contact" class="wow fadeInUp">
       <div class="container">
         <div class="section-header">
@@ -458,7 +294,8 @@
             <div class="contact-phone">
               <i class="ion-ios-telephone-outline"></i>
               <h3>Số điện thoại</h3>
-              <p><a href="tel:+842838533171">028 38 533 171</a> <br> <a href="tel:+840903868268">0903 868 268 </a></p>
+              <p><a href="tel:+842838533171">028 38 533 171</a>
+                <br> <a href="tel:+840903868268">0903 868 268 </a></p>
             </div>
           </div>
 
@@ -474,27 +311,29 @@
       </div>
 
       <div class="container mb-4">
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3919.6189897830086!2d106.66220724978443!3d10.763819092292406!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31752eef537bf73f%3A0x70294fc6e9bcdd30!2zMTcxIE5o4bqtdCBU4bqjbywgUGjGsOG7nW5nIDYsIFF14bqtbiAxMCwgSOG7kyBDaMOtIE1pbmgsIFZpZXRuYW0!5e0!3m2!1sen!2s!4v1542775058466" id="map_frame" width="100%" height="300" frameborder="0" style="border:0" allowfullscreen></iframe>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3919.6189897830086!2d106.66220724978443!3d10.763819092292406!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31752eef537bf73f%3A0x70294fc6e9bcdd30!2zMTcxIE5o4bqtdCBU4bqjbywgUGjGsOG7nW5nIDYsIFF14bqtbiAxMCwgSOG7kyBDaMOtIE1pbmgsIFZpZXRuYW0!5e0!3m2!1sen!2s!4v1542775058466"
+        id="map_frame" width="100%" height="300" frameborder="0" style="border:0" allowfullscreen></iframe>
       </div>
 
 
       <div class="container">
 
         <form action="" class="form" method="post">
-          {% csrf_token %}
-          {% for field in form %}
+          {% csrf_token %} {% for field in form %}
           <div class="form-group">
-              {{field}}
-              {% if field.error %}
-                <div class="alert alert-danger"> {{field.error}}</div>
-              {% endif %}
+            {{field}} {% if field.error %}
+            <div class="alert alert-danger"> {{field.error}}</div>
+            {% endif %}
           </div>
           {% endfor %}
 
-          <div class="text-center"><button type="submit" name="button">Liên hệ</button></div>
+          <div class="text-center">
+            <button type="submit" name="button">Liên hệ</button>
+          </div>
         </form>
       </div>
-    </section><!-- #contact -->
+    </section>
+    <!-- #contact -->
 
   </main>
 
@@ -507,19 +346,14 @@
       </div>
 
     </div>
-  </footer><!-- #footer -->
+  </footer>
+  <!-- #footer -->
 
   <a href="#" class="back-to-top"><i class="fas fa-chevron-up"></i></a>
 
   <!-- JavaScript Libraries -->
-  <script
-  src="https://code.jquery.com/jquery-3.3.1.min.js"
-  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-  crossorigin="anonymous"></script>
-  <script
-  src="https://code.jquery.com/jquery-migrate-3.0.1.min.js"
-  integrity="sha256-F0O1TmEa4I8N24nY0bya59eP6svWcshqX1uzwaWC4F4="
-  crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-migrate-3.0.1.min.js" integrity="sha256-F0O1TmEa4I8N24nY0bya59eP6svWcshqX1uzwaWC4F4=" crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.bundle.min.js" integrity="sha384-pjaaA8dDz/5BgdFUPX6M/9SUZv4d12SUPF0axWc+VRZkx5xU3daN+lYb49+Ax+Tl" crossorigin="anonymous"></script>
   <script src="{% static 'lib/easing/easing.min.js' %}"></script>
@@ -539,4 +373,5 @@
   <!--<script src="{% static 'js/main2.js' %} "></script>-->
 
 </body>
+
 </html>

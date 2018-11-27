@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+
+{% block title_block %}
+  {{category_name}}
+{% endblock %}
+
+
+{% block body_block %}
+  <section class="wow fadeInUp">
+    <div class="container p-3">
+      <div class="section-header"><h2>Tẩt cả xét nghiệm</h2></div>
+          <form action="get">
+            <button type="submit" name="sortby" value="A-Z" class="btn btn-outline-primary">Sắp xếp theo tên</button>
+            <button type="submit" name="sortby" value="Nhóm" class="btn btn-outline-primary">Sắp xếp theo nhóm xét nghiệm</button>
+          </form>
+      <table class="table">
+        <thead class = "thead-light">
+          <tr>
+            <th scope = col> Tên xét nghiệm</th>
+            <th scope = col>Nhóm</th>
+            <th scope = col> Loại mẫu</th>
+            <th scope = col> Ý nghĩa</th>
+            <th scope = col> Khoảng tham chiếu</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for test in tests %}
+          <tr>
+            <td><a href="{% url 'test' test.slug %}">{{test.name}}</a></td>
+            <td>{{test.category}}</td>
+            <td>{{test.sample_type}}</td>
+            <td>{{test.description|truncatechars:70}}<a href="{% url 'test' test.slug %}">Xem thêm</a></td>
+            <td>{{test.referance_range|truncatechars:20}}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+{% endblock %}

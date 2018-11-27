@@ -24,9 +24,14 @@ from wagtail.documents import urls as wagtaildocs_urls
 from wagtail.core import urls as wagtail_urls
 urlpatterns = [
     path('admin/', admin.site.urls),
+    #main page views
     path("", mainview.index, name = 'index'),
+    path('category/<slug:category_slug>/', mainview.category_detail, name = 'category'),
+    path('detail/<slug:test_slug>/',mainview.test_detail, name = 'test'),
+    re_path(r'^all_services/', mainview.all_services, name = 'all_services'),
     #Wagtail
     re_path(r'^cms_admin/', include(wagtailadmin_urls)),
     re_path(r'^documents/', include(wagtaildocs_urls)),
     re_path(r'^post/', include(wagtail_urls)),
+
 ] + static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
