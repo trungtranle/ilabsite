@@ -14,7 +14,7 @@ import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-TEMPLATE_DIR = os.path.join(BASE_DIR, 'template')
+TEMPLATE_DIR = os.path.join(BASE_DIR, 'templates')
 STATIC_DIR = os.path.join(BASE_DIR, 'static')
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 STATIC_ROOT = os.path.join(BASE_DIR, 'static_root')
@@ -61,6 +61,7 @@ INSTALLED_APPS = [
     'django.contrib.postgres',
     'django.contrib.humanize',
     'main',
+    'blog',
     #wagtail
     'wagtail.contrib.forms',
     'wagtail.contrib.redirects',
@@ -73,6 +74,7 @@ INSTALLED_APPS = [
     'wagtail.search',
     'wagtail.admin',
     'wagtail.core',
+    
     'wagtail.contrib.postgres_search', #POSTGRESQL SEARCH
 
     'modelcluster',
@@ -174,3 +176,26 @@ STATICFILES_DIRS = [
     STATIC_DIR,
     MEDIA_URL,
 ]
+
+TAGGIT_CASE_INSENSITIVE = True
+WAGTAIL_ENABLE_UPDATE_CHECK = False
+WAGTAIL_ALLOW_UNICODE_SLUGS = True
+
+WAGTAILADMIN_RICH_TEXT_EDITORS = {
+    'default': {
+        'WIDGET': 'wagtail.admin.rich_text.DraftailRichTextArea',
+        'OPTIONS': {
+            'features': ['h1','h2','h3','h4','h5','h6', 'bold', 'italic', 'link', 'document-link','ol','ul','image']
+        }
+    }
+}
+
+CACHES = {
+    'default': {
+        'BACKEND': 'django_redis.cache.RedisCache',
+        'LOCATION': 'redis://localhost:6379',
+        'OPTIONS': {
+            'CLIENT_CLASS': 'django_redis.client.DefaultClient',
+        }
+    }
+}

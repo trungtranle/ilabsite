@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% load wagtailcore_tags wagtailimages_tags %}
+{% load wagtailuserbar %}
+{% wagtailuserbar %}
+{% block body_block %}
+
+<h3>Test HomePage </h3>
+{% for blogpost in blogs %}
+    <h3><a href="{% pageurl blogpost %}">{{ blogpost.title }}</a></h3>
+
+  
+{% endfor %}
+
+{% endblock %}
+

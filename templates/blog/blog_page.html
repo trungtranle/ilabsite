@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% load wagtailcore_tags wagtailimages_tags %}
+{% load wagtailuserbar %}
+{% wagtailuserbar %}
+{% block body_block %}
+
+<h3>Test block </h3>
+
+<div class="container">
+  <h5>{{ page.title|richtext }}</h5>
+
+  <div class="container">
+    {{ page.author}}
+  </div>
+
+  <div>
+    {{ page.body}}
+  </div>
+  {% for tag in page.tags.all %}
+    <a href="{% pageurl page.get_ancestors.2 %}?tag={{ tag }}">{{ tag }}</a>
+  {% endfor %}
+</div>
+
+{% endblock %}
