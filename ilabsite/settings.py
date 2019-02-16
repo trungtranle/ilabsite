@@ -79,6 +79,8 @@ INSTALLED_APPS = [
 
     'modelcluster',
     'taggit',
+    'analytical',
+    
 ]
 
 MIDDLEWARE = [
@@ -89,6 +91,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    
 
     #wagtail
     'wagtail.core.middleware.SiteMiddleware',
@@ -189,3 +192,7 @@ WAGTAILADMIN_RICH_TEXT_EDITORS = {
         }
     }
 }
+
+WAGTAILIMAGES_IMAGE_MODEL = 'blog.CustomImage'
+
+GOOGLE_ANALYTICS_JS_PROPERTY_ID = 'UA-134598707-1'

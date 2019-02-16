@@ -1,5 +1,7 @@
 from django.db import models
+from django.db.models import F, Count, Value
 from django.shortcuts import render
+from django.forms import widgets
 from modelcluster.fields import ParentalKey, ParentalManyToManyField
 from wagtail.core import blocks
 from wagtail.core.models import Page, Orderable
@@ -11,7 +13,8 @@ from wagtail.search import index
 from wagtail.snippets.models import register_snippet
 from taggit.models import TaggedItemBase, Tag as TaggitTag
 from modelcluster.tags import ClusterTaggableManager
-
+from wagtail.images.models import Image, AbstractImage, AbstractRendition
+from blog.blocks import BaseStreamBlock
 # Create your models here.
 class HomePage(Page):
     title = RichTextField
@@ -39,11 +42,16 @@ class BlogPage(Page):
     author = models.CharField(max_length=255)
     date = models.DateField("Post date")
     intro = RichTextField()
+    hit_count = models.IntegerField(default= 0)
+    '''
     body = StreamField([
         ('heading', blocks.CharBlock(classname="full title")),
         ('paragraph', blocks.RichTextBlock()),
         ('image', ImageChooserBlock()),
+        ('blockquote', blocks.BlockQuoteBlock()),
     ])
+    '''
+    body = StreamField(BaseStreamBlock(), verbose_name = 'Page Body')
     tags = ClusterTaggableManager(through='BlogPageTag', blank=True)
     feed_image = models.ForeignKey(
         'wagtailimages.Image',
@@ -60,18 +68,27 @@ class BlogPage(Page):
 
     content_panels = Page.content_panels + [
         FieldPanel('intro'),
+        ImageChooserPanel('feed_image'),
         FieldPanel('author'),
         FieldPanel('date'),
         StreamFieldPanel('body'),
         FieldPanel('tags'),
         InlinePanel('related_links', label="Related links"),
+        
     ]
 
     promote_panels = [
         MultiFieldPanel(Page.promote_panels, "Common page configuration"),
-        ImageChooserPanel('feed_image'),
+        FieldPanel('hit_count', widget = widgets.NumberInput())
+        
     ]
 
+    def serve(self, request):
+       
+        self.hit_count += 1
+        self.save()       
+
+        return super().serve(request)
     
 
 class BlogPageRelatedLink(Orderable):
@@ -113,3 +130,22 @@ class Tag(TaggitTag):
 
     
     
+class CustomImage(AbstractImage):
+    # Add any extra fields to image here
+
+    # eg. To add a caption field:
+    caption = models.CharField(max_length=255, blank=True)
+
+    admin_form_fields = Image.admin_form_fields + (
+        # Then add the field names here to make them appear in the form:
+        'caption',
+    )
+
+
+class CustomRendition(AbstractRendition):
+    image = models.ForeignKey(CustomImage, on_delete=models.CASCADE, related_name='renditions')
+
+    class Meta:
+        unique_together = (
+            ('image', 'filter_spec', 'focal_point_key'),
+        )

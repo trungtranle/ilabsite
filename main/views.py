@@ -3,6 +3,7 @@ from main.forms import ContactForm
 from django.http import HttpResponseRedirect
 from django.contrib import messages
 from main.models import Test, TestCategory
+from blog.models import BlogPage, HomePage
 # Create your views here.
 def index(request):
     if request.method == "POST":
@@ -15,8 +16,10 @@ def index(request):
             print(form.errors)
     else:
         form = ContactForm()
-
-        return render(request,'index.html',{'form':form})
+    blog_post = BlogPage.objects.live()
+    recent_blog_post = blog_post[len(blog_post)-3 : len(blog_post)]
+    #print(recent_blog_post)
+    return render(request,'index.html',{'form':form, 'blog':recent_blog_post})
 
 def category_detail(request, category_slug = None):
     category = TestCategory.objects.get(slug = category_slug).pk

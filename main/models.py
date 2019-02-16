@@ -1,6 +1,7 @@
 from django.db import models
 from django.utils.text import slugify
 import re
+from django.contrib.auth.models import AbstractUser
 
 #No Vietnamese accent
 def no_accent_vietnamese(s):
@@ -93,3 +94,6 @@ class Contact_requirement(models.Model):
     class Meta:
         verbose_name = 'Yêu cầu liên hệ'
         verbose_name_plural = 'Yêu cầu liên hệ'
+
+
+# Only for LAST_ACTIVITY = True

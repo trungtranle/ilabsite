@@ -1,11 +1,13 @@
 {% load staticfiles %}
 {% load wagtailcore_tags wagtailimages_tags %}
 {% load wagtailuserbar %}
+{% load google_analytics_js %}
 {% wagtailuserbar %}
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
+    {% google_analytics_js %}
     <meta charset="utf-8">
     <title>ilab - Sức khỏe tin cậy {% block title_block %} {% endblock %}</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
@@ -70,7 +72,78 @@
         height: auto;
         max-width: 50vmax;
     }
+
+    blockquote {
+        display: block;
+        border-width: 2px 0;
+        border-style: solid;
+        border-color: #eee;
+        padding: 1.5em 0 0.5em;
+        margin: 1.5em 0;
+        position: relative;
+        font-style: italic;
+    }
+
+    blockquote:before {
+        content: '\201C';
+        position: absolute;
+        top: 0em;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: #fff;
+        width: 3rem;
+        height: 2rem;
+        font: 6em/1.08em 'PT Sans', sans-serif;
+        color: #666;
+        text-align: center;
+    }
+
+    blockquote:after {
+        content: "\2013 \2003"attr(cite);
+        display: block;
+        text-align: right;
+        font-size: 0.875em;
+        color: #e74c3c;
+    }
+
+    .block-image > img {
+        width: 100%;
+        height: auto;
+        max-width: 50vmax;
+    }
+
+    figure > img {
+        width: 100%;
+        height: auto;
+        max-width: 50vmax;
+    }
+    * {box-sizing: border-box;}
+    .img-caption {
+        position: relative;
+        width: 100%;
+        height: auto;
+        max-width: 50vmax;
+    }
+    .overlay {
+        position: absolute; 
+        bottom: 0; 
+        background: rgb(0, 0, 0);
+        background: rgba(0, 0, 0, 0.5); /* Black see-through */
+        color: #f1f1f1; 
+        width: 100%;
+        transition: .5s ease;
+        opacity:0;
+        color: white;
+        font-size: 20px;
+        padding: 20px;
+        text-align: center;
+        }
+
+    .img-caption:hover .overlay {
+        opacity: 1;
+}
 </style>
+
 
 <body data-spy="scroll" data-target="#nav-menu-container" data-offset="0">
 

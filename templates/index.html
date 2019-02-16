@@ -1,11 +1,13 @@
 {% load staticfiles %}
 {% load wagtailcore_tags wagtailimages_tags %}
 {% load wagtailuserbar %}
+{% load google_analytics_js %}
 {% wagtailuserbar %}
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
+  {% google_analytics_js %}
   <meta charset="utf-8">
   <title>ilab - Sức khỏe tin cậy</title>
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
@@ -288,6 +290,14 @@
         <div class="section-header">
           <h2>Kiến thức về xét nghiệm</h2>
           <p>Các bài viết mới nhất</p>
+          <div class="row">
+            {% for post in blog %}
+            <div class="col-sm-12 col-md-4 col-lg-4">
+              <a href="blog/{{post.slug}}">{{post.title}}</a>
+            </div>
+            {% endfor %}
+          </div>
+          
         </div>
       </div>
     </section>

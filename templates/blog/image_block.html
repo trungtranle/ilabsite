@@ -1,0 +1,9 @@
+{% load wagtailimages_tags %}
+<div class="img-caption">
+<figure>
+    
+    {% image self.image max-1024x1024 %}
+    <figcaption class = "overlay">{{ self.caption }} </figcaption>
+    
+</figure>
+</div>
