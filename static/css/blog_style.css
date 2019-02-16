@@ -217,8 +217,7 @@ h1 {
         top: 25%;
     }
 
-    .author {
-        
+    .author {        
         top: 70%;
     }
 
@@ -231,10 +230,26 @@ h1 {
     }
 
     .feed_image_container {
-        height: 50vh;;
+        height: 50vh;
+    }
+
+    .author > .author-detail {
+        display: none;
     }
 }
 
+@media (min-width: 769px){
+   
+    #feed_image {
+        height: 60vh;
+    }
+
+    .feed_image_container {
+        height: 60vh;
+    }
+
+    
+}
 
 @media (max-width: 350px) {
     h1 {

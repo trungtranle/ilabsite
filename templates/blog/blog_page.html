@@ -22,10 +22,11 @@
       {% if page.authors %}
       <span>Được viết bởi:</span>
       {% for author in page.authors %}
+      
 
       {% image author.image fill-40x40-c100 class="blog-avatar" %}
 
-      <span>{{ author.name }} {% if author.job_title %} - {{author.job_title}}
+      <span class = "author-detail">{{ author.name }} {% if author.job_title %} - {{author.job_title}}
         {% endif %}
 
 
