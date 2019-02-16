@@ -6,15 +6,17 @@ from modelcluster.fields import ParentalKey, ParentalManyToManyField
 from wagtail.core import blocks
 from wagtail.core.models import Page, Orderable
 from wagtail.core.fields import RichTextField, StreamField
-from wagtail.admin.edit_handlers import FieldPanel, MultiFieldPanel, InlinePanel, StreamFieldPanel
+from wagtail.admin.edit_handlers import FieldPanel, MultiFieldPanel, InlinePanel, StreamFieldPanel, FieldRowPanel
 from wagtail.images.edit_handlers import ImageChooserPanel
 from wagtail.images.blocks import ImageChooserBlock
 from wagtail.search import index
+from wagtail.snippets.edit_handlers import SnippetChooserPanel
 from wagtail.snippets.models import register_snippet
 from taggit.models import TaggedItemBase, Tag as TaggitTag
 from modelcluster.tags import ClusterTaggableManager
 from wagtail.images.models import Image, AbstractImage, AbstractRendition
 from blog.blocks import BaseStreamBlock
+from modelcluster.models import ClusterableModel
 # Create your models here.
 class HomePage(Page):
     title = RichTextField
@@ -37,11 +39,71 @@ class HomePage(Page):
             'blogs': blogs,
         })
     
+class BlogPeopleRelationship(Orderable, models.Model):
+   
+    page = ParentalKey(
+        'BlogPage', related_name='blog_person_relationship', on_delete=models.CASCADE
+    )
+    people = models.ForeignKey(
+        'blog.People', related_name='person_blog_relationship', on_delete=models.CASCADE
+    )
+    panels = [
+        SnippetChooserPanel('people')
+    ] 
+
+
+@register_snippet
+class People(index.Indexed, ClusterableModel):
     
+    name = models.CharField("Name", max_length=254)
+    
+    job_title = models.CharField("Job title", max_length=254, blank = True)
+
+    image = models.ForeignKey(
+        'blog.CustomImage',
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name='+'
+    )
+
+    panels = [
+        MultiFieldPanel([
+            FieldRowPanel([
+                FieldPanel('name'),
+                
+            ])
+        ], "Name"),
+        FieldPanel('job_title'),
+        ImageChooserPanel('image'),
+    ]
+
+    search_fields = [
+        index.SearchField('name'),
+        
+    ]
+
+    @property
+    def thumb_image(self):
+        # Returns an empty string if there is no profile pic or the rendition
+        # file can't be found.
+        try:
+            return self.image
+        except:
+            return ''
+
+    def __str__(self):
+        return '{}'.format(self.name)
+
+    class Meta:
+        verbose_name = 'Person'
+        verbose_name_plural = 'People'
+
+   
 class BlogPage(Page):
-    author = models.CharField(max_length=255)
+    #author = models.CharField(max_length=255)
     date = models.DateField("Post date")
-    intro = RichTextField()
+    intro = RichTextField(blank = True)
     hit_count = models.IntegerField(default= 0)
     '''
     body = StreamField([
@@ -54,11 +116,12 @@ class BlogPage(Page):
     body = StreamField(BaseStreamBlock(), verbose_name = 'Page Body')
     tags = ClusterTaggableManager(through='BlogPageTag', blank=True)
     feed_image = models.ForeignKey(
-        'wagtailimages.Image',
+        'blog.CustomImage',
         null=True,
         blank=True,
         on_delete=models.SET_NULL,
-        related_name='+'
+        related_name='+',
+        help_text = 'Hình theo chiều ngang, kích thước > 1000 px'
     )
 
     search_fields = Page.search_fields + [
@@ -67,9 +130,12 @@ class BlogPage(Page):
     ]
 
     content_panels = Page.content_panels + [
-        FieldPanel('intro'),
+        InlinePanel(
+            'blog_person_relationship', label="Author(s)",
+            panels=None, min_num=1),
         ImageChooserPanel('feed_image'),
-        FieldPanel('author'),
+        FieldPanel('intro'),
+        #FieldPanel('author'),
         FieldPanel('date'),
         StreamFieldPanel('body'),
         FieldPanel('tags'),
@@ -90,6 +156,20 @@ class BlogPage(Page):
 
         return super().serve(request)
     
+    def authors(self):
+        """
+        Returns the BlogPage's related People. Again note that we are using
+        the ParentalKey's related_name from the BlogPeopleRelationship model
+        to access these objects. This allows us to access the People objects
+        with a loop on the template. If we tried to access the blog_person_
+        relationship directly we'd print `blog.BlogPeopleRelationship.None`
+        """
+        authors = [
+            n.people for n in self.blog_person_relationship.all()
+        ]
+
+        return authors
+
 
 class BlogPageRelatedLink(Orderable):
     page = ParentalKey(BlogPage, on_delete=models.CASCADE, related_name='related_links')

@@ -3,28 +3,70 @@
 {% load wagtailuserbar %}
 {% load staticfiles %}
 {% wagtailuserbar %}
-
+{% block css_block%}
+<link rel="stylesheet" href="{% static 'css/blog_style.css'%}">
+{% endblock %}
 {% block title_block%}
-  {{page.title}}
+{{page.title}}
 {% endblock%}
 
 {% block body_block %}
+<div class="feed_image_container wow fadeInUp">
+  {% image page.feed_image original id="feed_image"%}
+  <div class="inner_box">
+    <center>
+      <h1 class="centered"> {{ page.title|richtext }}</h1>
+    </center>
 
-<h3>Test block </h3>
+    <p class='author'>
+      {% if page.authors %}
+      <span>Được viết bởi:</span>
+      {% for author in page.authors %}
 
-<div class="container">
-  <h5>{{ page.title|richtext }}</h5>
+      {% image author.image fill-40x40-c100 class="blog-avatar" %}
 
-  <div class="container">
-    {{ page.author}}
+      <span>{{ author.name }} {% if author.job_title %} - {{author.job_title}}
+        {% endif %}
+
+
+      </span>
+      {% endfor %}
+    </p>
+    {% endif %}
+
+    {% if page.date %}
+    <span class='date'>Đăng ngày {{page.date|date:"d/m/Y"}}</span>
+    {% endif %}
+  </div>
+</div>
+<div class="container mt-3 wow fadeInUp">
+
+
+  <div class="intro pt-3">
+
+    {% if page.intro %}
+    {{page.intro|richtext}}
+    {% endif %}
+
   </div>
 
   <div>
     {{ page.body}}
   </div>
-  {% for tag in page.tags.all %}
-    <a href="{% pageurl page.get_ancestors.2 %}?tag={{ tag }}">{{ tag }}</a>
-  {% endfor %}
+
+  <div>
+    <hr>
+    <span><em>Từ khóa:</em></span>
+    {% for tag in page.tags.all %}
+    <div class="tag">
+
+      <a href="{% pageurl page.get_ancestors.2 %}?tag={{ tag }}">{{ tag }}</a>
+    </div>
+
+
+    {% endfor %}
+    <hr>
+  </div>
 </div>
 
-{% endblock %}
+  {% endblock %}

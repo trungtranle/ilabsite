@@ -21,8 +21,7 @@ class HeadingBlock(StructBlock):
     heading_text = CharBlock(classname="title", required=True)
     size = ChoiceBlock(choices=[
         ('', 'Select a header size'),
-        ('h1', 'H1'),
-        ('h2', 'H2'),
+        
         ('h3', 'H3'),
         ('h4', 'H4'),
         ('h5', 'H5'),
@@ -31,7 +30,7 @@ class HeadingBlock(StructBlock):
 
     class Meta:
         icon = "title"
-        
+        template = 'blog/heading_block.html'
 
 
 class BlockQuote(StructBlock):
@@ -53,5 +52,4 @@ class BaseStreamBlock(StreamBlock):
     block_quote = BlockQuote()
     embed_block = EmbedBlock(
         help_text='Insert an embed URL e.g https://www.youtube.com/embed/SGJFWirQ3ks',
-        
-        template="blocks/embed_block.html")
+        template = 'blog/embed_block.html')

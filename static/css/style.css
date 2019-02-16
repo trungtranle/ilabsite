@@ -773,6 +773,27 @@ body.mobile-nav-active #mobile-nav-toggle {
   padding: 30px 0;
 }
 
+#blog {
+  padding: 30px 0;
+}
+
+#blog .owl-nav, #blog .owl-dots {
+  margin-top: 5px;
+  text-align: center;
+}
+
+#blog .owl-dot {
+  display: inline-block;
+  margin: 0 5px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: #ddd;
+}
+
+#blog .owl-dot.active {
+  background-color: #6F4AC1;
+}
 #testimonials .testimonial-item {
   box-sizing: content-box;
   padding: 30px 30px 0 30px;
