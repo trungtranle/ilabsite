@@ -4,6 +4,10 @@
 {% load staticfiles %}
 {% wagtailuserbar %}
 
+{% block title_block%}
+  {{page.title}}
+{% endblock%}
+
 {% block body_block %}
 
 <h3>Test block </h3>
