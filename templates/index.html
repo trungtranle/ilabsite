@@ -65,6 +65,8 @@
   .active {
     color: #6F4AC1 !important;
   }
+
+
 </style>
 
 <body data-spy="scroll" data-target="#nav-menu-container" data-offset="0">
@@ -285,22 +287,37 @@
     </section>
 
 
-    <section id="blog" class="wow fadeInUp">
-      <div class="container">
-        <div class="section-header">
-          <h2>Kiến thức về xét nghiệm</h2>
-          <p>Các bài viết mới nhất</p>
-          <div class="row">
-            {% for post in blog %}
-            <div class="col-sm-12 col-md-4 col-lg-4">
-              <a href="blog/{{post.slug}}">{{post.title}}</a>
-            </div>
-            {% endfor %}
-          </div>
+  <section id="blog" class="wow fadeInUp">
+    <div class="container">
+      <div class="section-header">
+        <h2>Kiến thức về xét nghiệm</h2>
+        <h4>Các bài viết mới nhất</h4>
+        <div class="row">
+          <div class="card-deck">
+          {% for post in blog %}
           
+           
+            <div class="card border-light wow fadeInUp">
+              {% image post.feed_image fill-200x160-c100 class="card-img-top"%}
+              <div class="card-body">
+              <h5 class="card-title"><a href="blog/{{post.slug}}">{{post.title}}</a></h5>
+              
+              <p class="card-text">{{post.intro|truncatewords_html:20|richtext}} <a href="blog/{{post.slug}}">Xem thêm...</a></p></div>
+              <div class="card-footer text-muted">
+                Ngày đăng: {{post.date|date:"d/m/Y"}}
+              </div>
+            </div>
+         
+          {% endfor %}
+          </div>
+        </div>
+        <div class="container pt-3 wow fadeInRightBig">
+          <h4 class="title"><a href="/blog">Xem tất cả các bài viết ... <i class="fas fa-chevron-circle-right"></i></a></h4>
+
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
     <section id="contact" class="wow fadeInUp">
       <div class="container">

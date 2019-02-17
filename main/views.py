@@ -16,8 +16,10 @@ def index(request):
             print(form.errors)
     else:
         form = ContactForm()
-    blog_post = BlogPage.objects.live()
+    blog_post = BlogPage.objects.order_by("-date").live()
+    
     recent_blog_post = blog_post[len(blog_post)-3 : len(blog_post)]
+    print(recent_blog_post)
     #print(recent_blog_post)
     return render(request,'index.html',{'form':form, 'blog':recent_blog_post})
 
